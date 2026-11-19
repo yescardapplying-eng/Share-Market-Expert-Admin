@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Share Market Expert Admin — Lead & Inquiry Desk</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Inter Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="top-nav">
+    <div class="nav-container">
+      <div class="brand-section">
+        <img src="assets/images/share-market-expert-icon.png" alt="SME" class="brand-logo-small">
+        <div class="brand-title-wrap">
+          <span class="brand-title">SHARE MARKET EXPERT ADMIN</span>
+          <span class="brand-tag">Inquiry &amp; Lead Management Desk &bull; Asia/Kolkata (IST)</span>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <div class="user-badge">
+          <span class="user-status-dot"></span>
+          <span>Logged in as <strong>Admin</strong></span>
+        </div>
+        <button type="button" class="btn-logout" id="btnLogout" title="Sign Out">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+            <polyline points="16 17 21 12 16 7"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line>
+          </svg>
+          <span>Sign Out</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Layout -->
+  <main class="main-layout">
+
+    <!-- Stat Summary Cards -->
+    <section class="stats-grid" aria-label="Lead Statistics">
+      <div class="stat-card">
+        <div class="stat-info">
+          <h3>Total Inquiries</h3>
+          <div class="stat-value" id="statTotal">—</div>
+        </div>
+        <div class="stat-icon total">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-info">
+          <h3>Popup Leads</h3>
+          <div class="stat-value" id="statPopup" style="color: #6ee7b7;">—</div>
+        </div>
+        <div class="stat-icon popup">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="9" y1="3" x2="9" y2="21"></line>
+          </svg>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-info">
+          <h3>Contact Us Messages</h3>
+          <div class="stat-value" id="statContact" style="color: #818cf8;">—</div>
+        </div>
+        <div class="stat-icon contact">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-info">
+          <h3>Today's Inquiries</h3>
+          <div class="stat-value" id="statToday" style="color: #c084fc;">—</div>
+        </div>
+        <div class="stat-icon today">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Toolbar Filters & Export -->
+    <section class="toolbar-card" aria-label="Directory Filters">
+      <div class="toolbar-grid">
+        <!-- Live Search -->
+        <div class="filter-group search-group">
+          <label class="filter-label" for="filterSearch">Search Inquiries</label>
+          <div class="input-with-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="filterSearch" class="filter-input" placeholder="Search by name, phone, state, or course focus...">
+          </div>
+        </div>
+
+        <!-- Form Source Filter -->
+        <div class="filter-group">
+          <label class="filter-label" for="filterFormType">Source Form</label>
+          <select id="filterFormType" class="filter-select">
+            <option value="all">All Sources</option>
+            <option value="popup">Popup Enquiry Modal</option>
+            <option value="contact">Contact Us Page Form</option>
+          </select>
+        </div>
+
+        <!-- Date Filter (Single Date) -->
+        <div class="filter-group" id="singleDateContainer">
+          <label class="filter-label" for="filterDate">Filter By Date (IST)</label>
+          <input type="date" id="filterDate" class="filter-input">
+          <button type="button" class="btn-toggle-range" id="btnToggleRange">Switch to Date Range</button>
+        </div>
+
+        <!-- Date Filter (Range, initially hidden) -->
+        <div class="filter-group" id="rangeDateContainer" style="display: none; flex-direction: row; gap: 8px;">
+          <div>
+            <label class="filter-label" for="filterDateFrom">From</label>
+            <input type="date" id="filterDateFrom" class="filter-input">
+          </div>
+          <div>
+            <label class="filter-label" for="filterDateTo">To</label>
+            <input type="date" id="filterDateTo" class="filter-input">
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="toolbar-actions">
+          <button type="button" class="btn-action reset" id="btnResetFilters" title="Reset all search filters">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="1 4 1 10 7 10"></polyline>
+              <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+            </svg>
+            <span>Reset</span>
+          </button>
+
+          <button type="button" class="btn-action export" id="btnExportCsv" title="Export current list to Excel / CSV">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Export to Excel</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Table Container -->
+    <section class="table-card">
+      <div class="table-header-meta">
+        <div class="table-title-area">
+          <h2 class="table-title">Incoming Inquiries Directory</h2>
+          <span class="count-badge" id="countBadge">0 Records</span>
+        </div>
+
+        <div class="view-switcher" role="group" aria-label="Layout view mode">
+          <button type="button" class="btn-view-toggle active" id="btnViewTable" title="Table View">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="3" y1="9" x2="21" y2="9"></line>
+              <line x1="3" y1="15" x2="21" y2="15"></line>
+              <line x1="9" y1="3" x2="9" y2="21"></line>
+            </svg>
+            <span>Table</span>
+          </button>
+          <button type="button" class="btn-view-toggle" id="btnViewCards" title="Card View">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+            <span>Cards</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Desktop & Tablet Table View -->
+      <div class="table-responsive" id="tableWrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Ref ID &bull; IST Time</th>
+              <th>Source Form</th>
+              <th>Full Name</th>
+              <th>Mobile Number</th>
+              <th>State / UT</th>
+              <th>Focus / Message</th>
+              <th style="text-align: right;">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="leadsTableBody">
+            <!-- Dynamic rows populated via JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Mobile Card View -->
+      <div class="mobile-cards-wrap" id="mobileCardsWrap">
+        <!-- Dynamic cards populated via JS -->
+      </div>
+
+      <!-- Pagination Footer -->
+      <div class="pagination-bar">
+        <div class="pagination-meta" id="paginationMeta">
+          Showing 0 – 0 of 0 Inquiries
+        </div>
+
+        <div class="pagination-controls">
+          <label for="pageSizeSelect" style="font-size: 0.78rem; color: var(--text-dim); margin-right: 4px;">Rows:</label>
+          <select id="pageSizeSelect" class="filter-select" style="width: auto; padding: 4px 8px; font-size: 0.8rem; margin-right: 12px;">
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100" selected>100 per page</option>
+            <option value="200">200</option>
+          </select>
+
+          <button type="button" class="btn-page" id="btnPrevPage" disabled>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            <span>Prev</span>
+          </button>
+
+          <span class="page-indicator" id="pageIndicator">Page 1 of 1</span>
+
+          <button type="button" class="btn-page" id="btnNextPage" disabled>
+            <span>Next</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Lead Detail Modal -->
+  <div class="modal-overlay" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="modalLeadRef">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title">Inquiry Dossier</h3>
+          <span style="font-size: 0.8rem; color: var(--text-muted); font-family: monospace;" id="detailLeadRef">SME-0000</span>
+        </div>
+        <button type="button" class="btn-modal-close" id="btnDetailClose" aria-label="Close modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="dossier-grid" id="dossierGrid">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-action reset" id="btnDetailCloseFooter">Close Dossier</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div class="modal-overlay" id="deleteModal" role="dialog" aria-modal="true">
+    <div class="modal-card" style="max-width: 440px;">
+      <div class="modal-header">
+        <h3 class="modal-title" style="color: #fca5a5;">Confirm Deletion</h3>
+        <button type="button" class="btn-modal-close" id="btnDeleteClose" aria-label="Close modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <p style="color: var(--text-main); font-size: 0.95rem; line-height: 1.6;">
+          Are you sure you want to permanently delete inquiry <strong id="deleteLeadRefSpan" style="color: #ffffff; font-family: monospace;">SME-0000</strong>?
+        </p>
+        <p style="color: var(--text-muted); font-size: 0.82rem; margin-top: 8px;">
+          This action is irreversible and will remove the record from the database.
+        </p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-action reset" id="btnDeleteCancel">Cancel</button>
+        <button type="button" class="btn-action" id="btnDeleteConfirm" style="background: var(--danger); color: #ffffff;">Delete Permanently</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast" role="status">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+    </svg>
+    <span id="toastMessage">Action completed successfully</span>
+  </div>
+
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,8 @@
+.git
+.gitignore
+.env
+*.zip
+*.log
+.dockerignore
+Dockerfile
+render.yaml
